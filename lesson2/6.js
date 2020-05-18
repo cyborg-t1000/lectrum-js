@@ -5,3 +5,12 @@
 // const array = [1, 2, 3, 4];
 
 ////////////////// Решение //////////////////
+
+const array = [1, 2, 3, 4];
+
+let sum = 0;
+for (const element of array) {
+    sum += element;
+}
+
+console.log(sum);
