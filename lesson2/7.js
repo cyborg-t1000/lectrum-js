@@ -10,8 +10,7 @@ const array = [1, 2, 3, 4];
 
 let sum = 0;
 for (let i = 0; i < array.length; i++) {
-    if (i % 2 == 0) sum += array[i];
-    // if (i % 2 != 0) sum += array[i]; тут вопрос, какой элемент считать четным - с точки зрения языка или с точки зоения человека, так как в языке первый элемент нулевой
+    if (array[i] % 2 == 0) sum += array[i];
 }
 
 console.log(sum);

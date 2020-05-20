@@ -8,6 +8,6 @@
 
 const array = [2, 5, 9, 15, 0, 4];
 
-for (let element of array) {
+for (const element of array) {
     if(element>3 && element<10) console.log(element)
 }
