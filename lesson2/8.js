@@ -14,3 +14,7 @@ for (let i = 0; i < array.length; i++) {
 }
 
 console.log(sum);
+
+for(const i=0; i<9; i++) {
+
+}
