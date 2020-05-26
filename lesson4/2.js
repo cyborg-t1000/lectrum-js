@@ -20,9 +20,29 @@ const person = {};
 
 // Решение
 
+Object.defineProperty(person, 'rate', {
+    value: null,
+    enumerable: false,
+    writable: true,
+    configurable: false,
+});
+
+Object.defineProperty(person, 'salary', {
+    get() {
+        let today = new Date();
+        return this.rate === undefined ? 0 : this.rate * today.getDate();
+    }
+});
+
+Object.defineProperty(person, 'salary', {
+    enumerable: false,
+    configurable: false,
+});
+
+
 person.rate = 30;
 
 // Предположим что сегодня 10 января, в этом случае это свойство возвращает число 300
-person.salary;
+console.log(person.salary);
 
 exports.person = person;
