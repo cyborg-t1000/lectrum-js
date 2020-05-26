@@ -43,6 +43,6 @@ Object.defineProperty(person, 'salary', {
 person.rate = 30;
 
 // Предположим что сегодня 10 января, в этом случае это свойство возвращает число 300
-console.log(person.salary);
+person.salary;
 
 exports.person = person;
