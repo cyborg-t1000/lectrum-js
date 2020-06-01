@@ -17,6 +17,17 @@
 
 // Решение
 
+const f = function (arr) {
+    if (!Array.isArray(arr)) throw new Error('Argument is not a array');
+    if (arr.length === 0) throw new Error('Array is empty');
+
+    let elem = arr.pop();
+    if (arr.length > 0) {
+        f(arr);
+    }
+    console.log(elem);
+}
+
 f([1, 2, 3]);
 // 1
 // 2

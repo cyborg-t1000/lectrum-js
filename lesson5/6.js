@@ -12,6 +12,12 @@
 
 // Решение
 
+const isEven = function(num) {
+    if (typeof num !== "number") throw new Error('Argument is not a number');
+
+    return num % 2 === 0;
+}
+
 isEven(3); // false
 isEven(4); // true
 

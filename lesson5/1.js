@@ -8,7 +8,12 @@
  */
 
 // Решение
+const f = function (num) {
+    if (typeof num !== "number") throw new Error('Argument is not a number');
 
-console.log(f2(2)); // 8
+    return num ** 3;
+}
+
+console.log(f(2)); // 8
 
 exports.f = f;
