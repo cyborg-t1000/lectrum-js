@@ -21,6 +21,22 @@ const INITIAL_ACCUMULATOR = 6;
 
 // Решение
 
+const reduce = function (arr, callBack, accum) {
+    let start = 0;
+
+    if (!Array.isArray(arr)) throw new Error('First argument is not a array');
+    if (typeof callBack !== "function") throw new Error('Second argument is not a function');
+    if (typeof accum === "undefined") {
+        let accum = arr[0];
+        start = 1;
+    }
+    for (let i = start; i < arr.length; i++) {
+        accum = callBack(accum, arr[i], i, arr);
+    }
+
+    return accum;
+}
+
 const result = reduce(
     array,
     (accumulator, element, index, arrayRef) => {
