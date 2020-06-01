@@ -20,6 +20,17 @@ const array = [1, 2, 3, 4, 5, 6];
 
 // Решение
 
+const every = function (arr, callBack) {
+    if (!Array.isArray(arr)) throw new Error('First argument is not a array');
+    if (typeof callBack !== "function") throw new Error('Second argument is not a function');
+    for (let i = 0; i < arr.length; i++) {
+        if (!callBack(arr[i], i, arr)) return false;
+    }
+
+    return true;
+}
+
+
 const result = every(array, (element, index, arrayRef) => {
     console.log(`${index}:`, element, arrayRef);
 

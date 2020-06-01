@@ -20,6 +20,18 @@ const array = ['Доброе утро!', 'Добрый вечер!', 3, 512, '#'
 
 // Решение
 
+const filter = function (arr, callBack) {
+    let result = [];
+
+    if (!Array.isArray(arr)) throw new Error('First argument is not a array');
+    if (typeof callBack !== "function") throw new Error('Second argument is not a function');
+    for (let i = 0; i < arr.length; i++) {
+        if (callBack(arr[i], i, arr)) result.push(arr[i]);
+    }
+
+    return result;
+}
+
 const filteredArray = filter(array, (element, index, arrayRef) => {
     console.log(`${index}:`, element, arrayRef);
 
