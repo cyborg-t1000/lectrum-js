@@ -31,7 +31,10 @@ Object.defineProperty(person, 'salary', {
     get() {
         let today = new Date();
         return this.rate === undefined ? 0 : this.rate * today.getDate();
-    }
+    },
+    enumerable: false,
+    writable: true,
+    configurable: false,
 });
 
 Object.defineProperty(person, 'salary', {
