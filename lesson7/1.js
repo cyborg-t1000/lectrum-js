@@ -31,6 +31,16 @@ const array = [
 
 // Решение
 
+const inspect = function (arr) {
+    if (!Array.isArray(arr)) throw new Error('First argument is not a array');
+
+    return arr.filter(function (item) {
+        return typeof item === 'string';
+    }).map(function (item) {
+        return item.length;
+    });
+}
+
 const result = inspect(array);
 console.log(result); // [ 7, 11, 7, 12 ]
 

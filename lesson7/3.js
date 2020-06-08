@@ -12,6 +12,17 @@
 
 // Решение
 
+const createArray = function (fill, cnt) {
+    if (typeof fill !== 'number' && typeof fill !== 'string' && typeof fill !== 'object' && Array.isArray(cnt)) throw new Error('First argument is invalid');
+    if (typeof cnt !== 'number') throw new Error('Second argument is not a number');
+
+    const result = Array(cnt).fill(fill);
+
+    return result;
+}
+
+//const result = createArray('x', 5);
+
 const result = createArray('x', 5);
 
 console.log(result); // [ x, x, x, x, x ]

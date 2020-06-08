@@ -19,6 +19,18 @@
  */
 
 // Решение
+const sum = function (total, item) {
+    if (typeof item === 'object') {
+        item = item.reduce(sum, 0);
+    }
+    return total + item;
+}
+
+const collect = function (arr) {
+    if (!Array.isArray(arr)) throw new Error('First argument is not a array');
+
+    return arr.reduce(sum, 0);
+}
 
 const array1 = [[[1, 2], [1, 2]], [[2, 1], [1, 2]]];
 console.log(collect(array1)); // 12
