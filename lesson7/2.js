@@ -20,7 +20,7 @@
 
 // Решение
 const sum = function (total, item) {
-    if (typeof item === 'object') {
+    if (Array.isArray(item)) {
         item = item.reduce(sum, 0);
     }
     return total + item;
