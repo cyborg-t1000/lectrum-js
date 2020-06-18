@@ -16,6 +16,14 @@
 
 // Решение
 
+const shallowMerge = function (obj1, obj2) {
+    for (const property of Object.getOwnPropertyNames(obj2)) {
+        Object.defineProperty(obj1, property, Object.getOwnPropertyDescriptor(obj2, property));
+    }
+
+    return obj1;
+}
+
 const user = { firstName: 'Marcus', lastName: 'Kronenberg' };
 const userData = { job: 'developer', country: 'Germany', lastName: 'Schmidt' };
 
