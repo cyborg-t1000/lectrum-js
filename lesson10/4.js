@@ -28,6 +28,19 @@
 
 // Решение
 
+const compose = function (...funcs) {
+    return (param) => {
+        let result = param;
+        for (let i = funcs.length - 1; i >= 0; i--) {
+            if (typeof funcs[i] !== "function") throw new Error('Argument is not a function');
+            result = funcs[i](result);
+            if (typeof result === "undefined") throw new Error(`callback at index ${i} did not return any value.`);
+        }
+        return result;
+    }
+}
+
+
 const result1 = compose(
     prevResult => prevResult + 'o',
     prevResult => prevResult + 'l',

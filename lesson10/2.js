@@ -18,6 +18,17 @@
  */
 
 // Решение
+const calculate = function (...funcs) {
+    let result = 0;
+
+    for (const func of funcs) {
+        if (typeof func !== "function") throw new Error('Argument is not a function');
+        result = func(result);
+        if (typeof result === "undefined") throw new Error('Function returned nothing');
+    }
+
+    return result;
+}
 
 const result = calculate(
     () => {

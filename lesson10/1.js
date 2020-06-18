@@ -22,12 +22,20 @@
 
 // Решение
 
+const bind = function (func, obj, ...rest) {
+    if (typeof func !== "function") throw new Error('1st argument is not a function');
+    if (typeof obj !== "object") throw new Error('2nd argument is not an object');
+    if (Array.isArray(obj)) throw new Error('2nd argument is array');
+
+    return () => func.apply(obj, rest);
+}
+
 function getName(greeting, message) {
     return `${greeting} ${message} ${this.name}.`;
 }
 
-const user = { name: 'Walter', getName };
-const oliver = { name: 'Oliver' };
+const user = {name: 'Walter', getName};
+const oliver = {name: 'Oliver'};
 
 const boundedGetName = bind(getName, oliver, 'Hello!', 'I am');
 

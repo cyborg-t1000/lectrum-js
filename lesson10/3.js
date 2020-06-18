@@ -24,12 +24,32 @@
 
 // Решение
 
+const calculateAdvanced = function (...funcs) {
+    let result = 0;
+    let errors = [];
+
+    for (let i = 0; i < funcs.length; i++) {
+        try {
+            if (typeof funcs[i] !== "function") throw new Error('Argument is not a function');
+            let tmp = funcs[i](result);
+            if (typeof tmp === "undefined") throw new Error(`callback at index ${i} did not return any value.`);
+            result = tmp;
+        } catch (e) {
+            errors.push({index: i, name: e.name, message: e.message});
+        }
+    }
+
+    return {result, errors};
+}
+
 const result = calculateAdvanced(
-    () => {},
+    () => {
+    },
     () => {
         return 7;
     },
-    () => {},
+    () => {
+    },
     prevResult => {
         return prevResult + 4;
     },
