@@ -28,15 +28,26 @@
 
 // Решение
 
+// const compose = function (...funcs) {
+//     return (param) => {
+//         let result = param;
+//         for (let i = funcs.length - 1; i >= 0; i--) {
+//             if (typeof funcs[i] !== "function") throw new Error('Argument is not a function');
+//             result = funcs[i](result);
+//             if (typeof result === "undefined") throw new Error(`callback at index ${i} did not return any value.`);
+//         }
+//         return result;
+//     }
+// }
+
 const compose = function (...funcs) {
-    return (param) => {
-        let result = param;
-        for (let i = funcs.length - 1; i >= 0; i--) {
-            if (typeof funcs[i] !== "function") throw new Error('Argument is not a function');
-            result = funcs[i](result);
-            if (typeof result === "undefined") throw new Error(`callback at index ${i} did not return any value.`);
-        }
-        return result;
+    return function (param) {
+        return funcs.reduceRight(function (accum, currentFunc, index, funcs) {
+            if (typeof currentFunc !== "function") throw new Error('Argument is not a function');
+            accum = currentFunc(accum);
+            if (!accum) throw new Error(`callback at index ${i} did not return any value.`);
+            return accum;
+        }, param);
     }
 }
 
