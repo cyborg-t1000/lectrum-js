@@ -36,13 +36,17 @@ function CleanerRobot(
             `Начинаю процесс уборки. Время уборки: ${cleaningTime} часов.`,
         );
 
-        energy -= ENERGY_CONSUMPTION * cleaningTime;
+        consumptEnergy(cleaningTime);
 
         /* Для удобства время уборки сокращено до формата 1 час = 1 секунда */
         timerId = setTimeout(onReady, cleaningTime * 1000);
     };
 
     // Решение
+
+    consumptEnergy = (time) => {
+        energy -= ENERGY_CONSUMPTION * time;
+    }
 
     this.stop = () => {
         clearTimeout(timerId);
