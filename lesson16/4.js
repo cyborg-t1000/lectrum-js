@@ -15,15 +15,22 @@
 
 class Stringer {
 
+    isString(string) {
+        if (typeof string !== 'string') throw new TypeError('Not a string');
+    }
+
     reverse(string) {
+        this.isString(string);
         return string.split("").reverse().join("");
     }
 
     uppercaseFirst(string) {
+        this.isString(string);
         return string[0].toUpperCase() + string.slice(1);
     }
 
     uppercaseAll(string) {
+        this.isString(string);
         return string.split(" ").map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     }
 }
